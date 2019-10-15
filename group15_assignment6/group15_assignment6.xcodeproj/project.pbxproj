@@ -13,6 +13,9 @@
 		7369934E23566C9C002C6976 /* group15_assignment6.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7369934C23566C9C002C6976 /* group15_assignment6.xcdatamodeld */; };
 		7369935023566C9D002C6976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7369934F23566C9D002C6976 /* Assets.xcassets */; };
 		7369935323566C9D002C6976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7369935123566C9D002C6976 /* LaunchScreen.storyboard */; };
+		7369935D23567032002C6976 /* AddAdventurerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369935C23567032002C6976 /* AddAdventurerViewController.swift */; };
+		7369935F23567039002C6976 /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7369935E23567039002C6976 /* QuestViewController.swift */; };
+		73699363235671F0002C6976 /* AdventurerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73699362235671F0002C6976 /* AdventurerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7369934F23566C9D002C6976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7369935223566C9D002C6976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7369935423566C9D002C6976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7369935C23567032002C6976 /* AddAdventurerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdventurerViewController.swift; sourceTree = "<group>"; };
+		7369935E23567039002C6976 /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
+		73699362235671F0002C6976 /* AdventurerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventurerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				7369934523566C9C002C6976 /* AppDelegate.swift */,
 				7369934723566C9C002C6976 /* ViewController.swift */,
 				7369934923566C9C002C6976 /* Main.storyboard */,
+				73699362235671F0002C6976 /* AdventurerTableViewController.swift */,
+				7369935C23567032002C6976 /* AddAdventurerViewController.swift */,
+				7369935E23567039002C6976 /* QuestViewController.swift */,
 				7369934F23566C9D002C6976 /* Assets.xcassets */,
 				7369935123566C9D002C6976 /* LaunchScreen.storyboard */,
 				7369935423566C9D002C6976 /* Info.plist */,
@@ -137,9 +146,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7369935D23567032002C6976 /* AddAdventurerViewController.swift in Sources */,
+				73699363235671F0002C6976 /* AdventurerTableViewController.swift in Sources */,
 				7369934E23566C9C002C6976 /* group15_assignment6.xcdatamodeld in Sources */,
 				7369934823566C9C002C6976 /* ViewController.swift in Sources */,
 				7369934623566C9C002C6976 /* AppDelegate.swift in Sources */,
+				7369935F23567039002C6976 /* QuestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
