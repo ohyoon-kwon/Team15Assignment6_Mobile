@@ -9,15 +9,18 @@ import UIKit
 
 class QuestViewController: UIViewController {
     
-    var timer = Timer()
-    //timer = Timer.scheduledTimer(timeInterval: [time interval], target: self, selector: #selector([function to call]), userInfo: nil, repeats: true)
-    //timer.invalidate()
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        //timer = Timer.scheduledTimer(timeInterval: [time interval], target: self, selector: #selector([function to call]), userInfo: nil, repeats: true)
     }
+    
+    
+    
+    
     
 
     /*

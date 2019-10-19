@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AdventurerTableViewController: UITableViewController {
     // MARK: outlets
@@ -18,7 +19,9 @@ class AdventurerTableViewController: UITableViewController {
     @IBOutlet weak var HPLabel: UILabel!
     @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var HPValLabel: UILabel!
-    
+    @IBOutlet weak var addMember: UIBarButtonItem!
+
+    var member: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
