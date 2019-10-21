@@ -9,16 +9,8 @@ import UIKit
 import CoreData
 
 class AdventurerTableViewController: UITableViewController {
-    // MARK: outlets
-    @IBOutlet weak var portraitImage: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var professionLabel: UILabel!
-    @IBOutlet weak var attackMod: UILabel!
-    @IBOutlet weak var HPLabel: UILabel!
-    @IBOutlet weak var attackLabel: UILabel!
-    @IBOutlet weak var HPValLabel: UILabel!
+    // MARK: outlets
     @IBOutlet weak var addMember: UIBarButtonItem!
 
     var member: [NSManagedObject] = []
@@ -36,24 +28,34 @@ class AdventurerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        print(member.count)
+        return member.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let adventurer = member[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell",
+                                          for: indexPath) as! MemberTableViewCell
+        //cell.portraitImage?.image =
+        cell.nameLabel?.text =
+            adventurer.value(forKeyPath: "name") as? String
+        cell.levelLabel?.text =
+            adventurer.value(forKeyPath: "level") as? String
+        cell.professionLabel?.text =
+            adventurer.value(forKeyPath: "profession") as? String
+        cell.attackMod?.text =
+            adventurer.value(forKeyPath: "attackMod") as? String
+        let curHP =        adventurer.value(forKeyPath: "currentHP") as? String
+        let totHP = adventurer.value(forKeyPath: "totalHP") as? String
+        cell.HPValLabel?.text = "\(String(describing: curHP)) / \(String(describing: totHP))"
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

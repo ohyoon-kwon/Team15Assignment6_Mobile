@@ -14,8 +14,6 @@ class MemberTableViewCell: UITableViewCell {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var professionLabel: UILabel!
     @IBOutlet weak var attackMod: UILabel!
-    @IBOutlet weak var HPLabel: UILabel!
-    @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var HPValLabel: UILabel!
     
     override func awakeFromNib() {
