@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddAdventurerViewController: UIViewController {
+class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: outlets
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,14 +20,35 @@ class AddAdventurerViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        nameTextField.delegate = self
+        classTextField.delegate = self
+        saveButton.isEnabled = false
         // Do any additional setup after loading the view.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        classTextField.resignFirstResponder()
+        
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text1 = nameTextField.text
+        let text2 = classTextField.text
+        
+        if text1!.isEmpty || text2!.isEmpty {
+            saveButton.isEnabled = false
+        } else {
+            saveButton.isEnabled = true
+        }
+        
+        return true
+    }
 
     /*
     // MARK: - Navigation

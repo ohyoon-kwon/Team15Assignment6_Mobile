@@ -188,6 +188,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveMember:" destination="Qsl-Yx-8Yz" eventType="touchUpInside" id="IDf-lr-UHj"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="izx-fG-4Fx">
                                 <rect key="frame" x="20" y="242" width="374" height="168"/>
