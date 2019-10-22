@@ -30,7 +30,6 @@ class AdventurerTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(Adventurers.count)
         return Adventurers.count
     }
 
@@ -42,8 +41,8 @@ class AdventurerTableViewController: UITableViewController {
         cell.portraitImage?.image = UIImage(named: "member2")
         cell.nameLabel?.text =
             adventurer.value(forKeyPath: "name") as? String
-        cell.levelLabel?.text =
-            adventurer.value(forKeyPath: "level") as? String
+        let lev = adventurer.value(forKeyPath: "level")
+        cell.levelLabel?.text = "\(lev ?? 1)"
         cell.professionLabel?.text =
             adventurer.value(forKeyPath: "profession") as? String
         let att = adventurer.value(forKeyPath: "attackMod")
