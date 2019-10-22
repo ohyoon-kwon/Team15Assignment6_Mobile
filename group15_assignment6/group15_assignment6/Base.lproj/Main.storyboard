@@ -25,7 +25,7 @@
                                 <navigationItem title="Adventurers" id="Byp-48-Eld">
                                     <barButtonItem key="leftBarButtonItem" title="Add Member" id="UdN-Dm-CBr">
                                         <connections>
-                                            <segue destination="Qsl-Yx-8Yz" kind="presentation" id="wx9-39-88X"/>
+                                            <segue destination="Qsl-Yx-8Yz" kind="presentation" identifier="segueFromAdd" id="wx9-39-88X"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -124,7 +124,7 @@
                                     <outlet property="nameLabel" destination="ROv-IR-mmy" id="VhK-5I-G4R"/>
                                     <outlet property="portraitImage" destination="KM2-xp-xki" id="Fdq-Xm-5XX"/>
                                     <outlet property="professionLabel" destination="PDX-Fh-Vye" id="h7e-s6-SKf"/>
-                                    <segue destination="jZt-eL-9EK" kind="presentation" id="rsQ-H2-XOB"/>
+                                    <segue destination="jZt-eL-9EK" kind="presentation" identifier="segueFromQuest" id="rsQ-H2-XOB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
