@@ -183,6 +183,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancel:" destination="Qsl-Yx-8Yz" eventType="touchUpInside" id="ThZ-id-Ibe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zp2-9d-CcC">
                                 <rect key="frame" x="263" y="466" width="131" height="30"/>
@@ -195,6 +198,7 @@
                                 </state>
                                 <connections>
                                     <action selector="savebtn:" destination="Qsl-Yx-8Yz" eventType="touchUpInside" id="kKs-kE-dFX"/>
+                                    <segue destination="Tfu-q0-2t1" kind="unwind" unwindAction="unwindToMealListWithSender:" id="qLz-Bd-Sb6"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="izx-fG-4Fx">
@@ -282,13 +286,13 @@
                         <viewLayoutGuide key="safeArea" id="W50-Pj-kYg"/>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="UPR-TC-kYd" id="vtd-Vo-065"/>
                         <outlet property="classTextField" destination="Mfk-aE-RFc" id="kP6-AB-cmT"/>
                         <outlet property="nameTextField" destination="afA-AD-HCT" id="sqR-Wd-uaB"/>
                         <outlet property="savebtn" destination="zp2-9d-CcC" id="0Wb-vL-TP9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I15-oj-Ws3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Tfu-q0-2t1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1721.7391304347827" y="-133.25892857142856"/>
         </scene>

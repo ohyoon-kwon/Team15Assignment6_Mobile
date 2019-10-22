@@ -15,7 +15,6 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
     //MARK: outlets
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var classTextField: UITextField!
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var savebtn: UIButton!
     
     override func viewDidLoad() {
@@ -35,7 +34,6 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
         // Disable the Save button if the text field is empty.
         let text1 = nameTextField.text ?? ""
         let text2 = classTextField.text ?? ""
-
         savebtn.isEnabled = !text1.isEmpty && !text2.isEmpty
     }
     
@@ -50,6 +48,11 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
         //let classVal = classTextField.text!
     }
     // This method lets you configure a view controller before it's presented.
+    
+    // Mark : Navigation
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
