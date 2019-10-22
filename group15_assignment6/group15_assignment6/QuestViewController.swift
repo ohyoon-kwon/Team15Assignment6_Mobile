@@ -19,9 +19,11 @@ class QuestViewController: UIViewController {
         //timer = Timer.scheduledTimer(timeInterval: [time interval], target: self, selector: #selector([function to call]), userInfo: nil, repeats: true)
     }
     
-    
-    
-    
+    // MARK: Action
+    @IBAction func endquest(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+
+    }
     
 
     /*
