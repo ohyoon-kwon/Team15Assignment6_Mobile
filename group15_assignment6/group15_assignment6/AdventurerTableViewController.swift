@@ -13,7 +13,7 @@ class AdventurerTableViewController: UITableViewController {
     // MARK: outlets
     @IBOutlet weak var addMember: UIBarButtonItem!
 
-    var member: [NSManagedObject] = []
+    var Adventurers: [NSManagedObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +32,13 @@ class AdventurerTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(member.count)
-        return member.count
+        print(Adventurers.count)
+        return Adventurers.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let adventurer = member[indexPath.row]
+        let adventurer = Adventurers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell",
                                           for: indexPath) as! MemberTableViewCell
         //cell.portraitImage?.image =
@@ -56,7 +56,12 @@ class AdventurerTableViewController: UITableViewController {
         return cell
     }
     
-
+    // MARK: - action
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? AddAdventurerViewController {
+            tableView.reloadData()
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -101,5 +106,5 @@ class AdventurerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
