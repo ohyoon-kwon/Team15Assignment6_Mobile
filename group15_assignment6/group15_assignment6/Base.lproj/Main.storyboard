@@ -212,7 +212,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tBy-yi-Ola">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="tBy-yi-Ola" customClass="portraitCollectionViewCell" customModule="group15_assignment6" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -232,6 +232,10 @@
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Qsl-Yx-8Yz" id="5Su-gO-c8q"/>
+                                    <outlet property="delegate" destination="Qsl-Yx-8Yz" id="suy-8b-fkE"/>
+                                </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afA-AD-HCT">
                                 <rect key="frame" x="83" y="103" width="311" height="30"/>
@@ -285,6 +289,7 @@
                     </view>
                     <connections>
                         <outlet property="classTextField" destination="Mfk-aE-RFc" id="kP6-AB-cmT"/>
+                        <outlet property="collectionView" destination="izx-fG-4Fx" id="n1l-ac-ub4"/>
                         <outlet property="nameTextField" destination="afA-AD-HCT" id="sqR-Wd-uaB"/>
                         <outlet property="savebtn" destination="zp2-9d-CcC" id="0Wb-vL-TP9"/>
                     </connections>

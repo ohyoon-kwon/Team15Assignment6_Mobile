@@ -9,13 +9,15 @@ import UIKit
 import CoreData
 import os.log
 
-class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
+class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     var Adventurers: [NSManagedObject] = []
-
+    
+    var portraitImageList = ["member1","member2","member3","member4","member5"]
+    
     //MARK: outlets
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var classTextField: UITextField!
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var savebtn: UIButton!
     
     override func viewDidLoad() {
@@ -44,6 +46,32 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate {
         print("\(savebtn.isEnabled)")
         nameTextField.resignFirstResponder()
         classTextField.resignFirstResponder()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return portraitImageList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! portraitCollectionViewCell
+        
+        // Configure the cell
+        let portraitName = portraitImageList[indexPath.row]
+        let portrait = UIImage(named: portraitName)!
+        cell.displayContent(image: portrait)
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIColor.gray.cgColor
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.layer.borderWidth = 0.0
+        cell?.layer.borderColor = UIColor.clear.cgColor
     }
     
     // Mark : Navigation

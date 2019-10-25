@@ -58,7 +58,7 @@ class AdventurerTableViewController: UITableViewController {
     @IBAction func unwindToAdventurerView (sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddAdventurerViewController {
             let nameVal = sourceViewController.nameTextField.text ?? ""
-            let photo = sourceViewController.photoImageView.image!
+            //let photo = sourceViewController.photoImageView.image!
             let classVal = sourceViewController.classTextField.text ?? ""
             saveToCore(nameVal: nameVal,classVal: classVal/*,photo: photo*/)
         }
@@ -138,14 +138,45 @@ class AdventurerTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
+        // Get the new view controller using segue.destination
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "ToQuest" {
+            
+            let qViewController = segue.destination as? QuestViewController
+            
+            if let selectedCell = sender as? MemberTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedCell)!
+                
+                let adventurer = Adventurers[indexPath.row]
+                let lev = adventurer.value(forKeyPath: "level")
+                let levelAtSelect = "\(lev ?? 1)"
+                let portraitAtSelect = UIImage(named: "member2")
+                let professionAtSelect = adventurer.value(forKeyPath: "profession") as? String
+                let nameAtSelect = adventurer.value(forKeyPath: "name") as? String
+                let att = adventurer.value(forKeyPath: "attackMod")
+                let attackAtSelect =  "\(att ?? 0)"
+                let curHpAtSelect = adventurer.value(forKeyPath: "currentHP")
+                let totHpAtSelect =
+                adventurer.value(forKeyPath: "totalHP")
+                let hpAtSelect = "\(curHpAtSelect ?? 0)/\(totHpAtSelect ?? 0)"
+                
+                if (qViewController != nil) {
+                    qViewController!.levelLabel.text = levelAtSelect
+                    qViewController!.portrait.image = portraitAtSelect
+                    qViewController!.professionLabel.text = professionAtSelect
+                    qViewController!.nameLabel.text = nameAtSelect
+                    qViewController!.attackLabel.text = attackAtSelect
+                    qViewController!.hpLabel.text = hpAtSelect
+                }
+            }
+        } else if segue.identifier == "PresentModally" {
+            print("Modal view presented")
+        }
     }
-    */
     
 }

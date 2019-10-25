@@ -21,7 +21,6 @@ class QuestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sampleData()
         // Do any additional setup after loading the view.
         //timer = Timer.scheduledTimer(timeInterval: [time interval], target: self, selector: #selector([function to call]), userInfo: nil, repeats: true)
     }
@@ -32,16 +31,6 @@ class QuestViewController: UIViewController {
 
     }
     
-    func sampleData(){
-        questDetailText.text = "Long story short"
-        attackLabel.text = "3.33"
-        nameLabel.text = "laz"
-        hpLabel.text = "79/100"
-        professionLabel.text = "Master Thief"
-        portrait.image = UIImage(named:"member2")
-        levelLabel.text = "1"
-    }
-
     /*
     // MARK: - Navigation
 
