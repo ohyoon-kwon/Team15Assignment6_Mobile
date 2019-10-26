@@ -25,7 +25,7 @@
                                 <navigationItem title="Adventurers" id="Byp-48-Eld">
                                     <barButtonItem key="leftBarButtonItem" title="Add Member" id="UdN-Dm-CBr">
                                         <connections>
-                                            <segue destination="Qsl-Yx-8Yz" kind="presentation" identifier="segueFromAdd" id="wx9-39-88X"/>
+                                            <segue destination="Qsl-Yx-8Yz" kind="presentation" id="c7z-lo-ueT"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -128,7 +128,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="qgW-OL-P9U" id="8t0-M0-b3o"/>
+                            <outlet property="dataSource" destination="qgW-OL-P9U" id="Qpm-iQ-Vn5"/>
                             <outlet property="delegate" destination="qgW-OL-P9U" id="9st-xG-28P"/>
                         </connections>
                     </tableView>
@@ -196,11 +196,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="save:" destination="Qsl-Yx-8Yz" eventType="touchUpInside" id="zLY-cI-Q6m"/>
                                     <segue destination="Tfu-q0-2t1" kind="unwind" unwindAction="unwindToAdventurerViewWithSender:" id="Mud-EA-DpP"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="izx-fG-4Fx">
-                                <rect key="frame" x="20" y="242" width="374" height="168"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="izx-fG-4Fx">
+                                <rect key="frame" x="20" y="242" width="120" height="168"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="Uii-N6-1xe"/>
@@ -230,6 +231,9 @@
                                             <constraint firstAttribute="bottom" secondItem="waB-Mg-jaD" secondAttribute="bottom" id="rcG-Ym-9PC"/>
                                             <constraint firstItem="waB-Mg-jaD" firstAttribute="top" secondItem="tBy-yi-Ola" secondAttribute="top" id="zEG-qc-H7b"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="portraitImage" destination="waB-Mg-jaD" id="IQJ-zS-y0r"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

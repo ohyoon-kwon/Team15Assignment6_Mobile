@@ -22,6 +22,7 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         nameTextField.delegate = self
         classTextField.delegate = self
         updateSaveButtonState()
@@ -30,7 +31,7 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
-        savebtn.isEnabled = false
+        //savebtn.isEnabled = false
     }
     
     private func updateSaveButtonState() {
@@ -48,9 +49,11 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         classTextField.resignFirstResponder()
     }
     
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return portraitImageList.count
     }
+
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! portraitCollectionViewCell
@@ -88,6 +91,49 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
             return
         }
     }
+    
+    
+    
+    @IBAction func save(_ sender: UIButton) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Adventurer",
+                                       in: managedContext)!
+        
+        let adventurer = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        let namefield = nameTextField.text
+        let classfield = classTextField.text
+        let selectedimage = UIImage(named: portraitImageList[0])!
+        
+        // 3
+        adventurer.setValue(namefield, forKeyPath: "name")
+        adventurer.setValue(classfield, forKeyPath: "profession")
+        adventurer.setValue(selectedimage, forKeyPath: "portrait")
+    
+        
+        // 4
+        do {
+            try managedContext.save()
+            Adventurers.append(adventurer)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    
 }
 
 

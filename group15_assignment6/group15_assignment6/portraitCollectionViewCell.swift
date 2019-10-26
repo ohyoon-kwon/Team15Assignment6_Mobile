@@ -8,7 +8,9 @@
 import UIKit
 
 class portraitCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var portraitImage: UIImageView!
+    
     func displayContent(image:UIImage){
         portraitImage.image = image
     }
