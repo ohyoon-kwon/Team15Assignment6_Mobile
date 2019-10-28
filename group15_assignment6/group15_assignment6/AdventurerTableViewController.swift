@@ -18,7 +18,6 @@ class AdventurerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // get sample data to display quest before add member working
-        saveToCore(nameVal: "Ize",classVal: "Master Thief")
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }

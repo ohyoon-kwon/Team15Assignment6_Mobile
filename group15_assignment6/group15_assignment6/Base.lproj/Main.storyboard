@@ -206,7 +206,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="168" id="Uii-N6-1xe"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kpd-lA-K6C">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kpd-lA-K6C">
                                     <size key="itemSize" width="120" height="167"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -214,7 +214,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionViewCell" id="tBy-yi-Ola" customClass="portraitCollectionViewCell" customModule="group15_assignment6" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="167"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="120" height="167"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="167"/>
