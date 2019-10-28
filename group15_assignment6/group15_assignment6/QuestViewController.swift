@@ -20,6 +20,7 @@ class QuestViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     var turn = 0;
     var enemyHP = 0;
+    var monstersSlayed = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +32,17 @@ class QuestViewController: UIViewController {
         // Set enemy
         if (enemyHP <= 0) {
             enemyHP = Int(arc4random_uniform(50)) + 100;
-            if (turn != 0) {questDetailText.text += "\nEnemy is defeated!\nA new enemy appears!"}
+            //enemyHP = 20;
+            if (turn != 0) {questDetailText.text += "\nEnemy is defeated!\nA new enemy appears!"; monstersSlayed += 1;}
         }
         // Adventurer makes move
-        let attack = (Int(arc4random_uniform(4)) != 0);
+        let attack = (Int(arc4random_uniform(6)) != 0);
         if (turn % 2 == 0) {
             if (attack) {
                 // Access MEMBER_ATTACK and use it as a multplier.
                 var temp = (attackLabel.text! as NSString).doubleValue;
                 temp = round(temp * 15);
-                let damage = Int(temp) + Int(arc4random_uniform(10));
+                let damage = Int(temp) + Int(arc4random_uniform(10)) + 10;
                 enemyHP -= Int(damage);
                 // Access MEMBER_NAME to print to log
                 questDetailText.text += "\n\(nameLabel.text ?? "") attacks for \(damage)";
@@ -51,7 +53,10 @@ class QuestViewController: UIViewController {
         else {
             if (attack) {
                 let damage = Int(arc4random_uniform(10)) + 5;
+                //let damage = 1
                 // subtact from MEMBER_HP
+                let hp = (hpLabel.text! as NSString).intValue
+                hpLabel.text = String(hp - Int32(damage))
                 questDetailText.text += "\nMonster attacks for \(damage)"
                 
             }
@@ -59,7 +64,15 @@ class QuestViewController: UIViewController {
         }
         turn += 1;
         // Close window if  MEMBER_HP falls to zero:
-        // if ((attackLabel.text! as NSString).intValue <= 0) {dismiss(animated: true, completion: nil)}
+        if ((hpLabel.text! as NSString).intValue <= 0) {
+            dismiss(animated: true, completion: nil)
+            
+        }
+        if (monstersSlayed == 3) {
+            let level = (levelLabel.text! as NSString).intValue;
+            levelLabel.text = String(level + 1);
+            monstersSlayed = 0;
+        }
     }
     
     // MARK: Action
