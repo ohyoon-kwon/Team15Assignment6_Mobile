@@ -18,7 +18,6 @@ class AdventurerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // get sample data to display quest before add member working
-        saveToCore(nameVal: "Ize",classVal: "Master Thief")
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -41,7 +40,8 @@ class AdventurerTableViewController: UITableViewController {
         cell.portraitImage?.image = UIImage(named: "member2")
         cell.nameLabel?.text =
             adventurer.value(forKeyPath: "name") as? String
-        let lev = adventurer.value(forKeyPath: "level")
+        cell.levelLabel?.text =
+            adventurer.value(forKeyPath: "level") as? String
         cell.levelLabel?.text = "\(lev ?? 1)"
         cell.professionLabel?.text =
             adventurer.value(forKeyPath: "profession") as? String
@@ -111,17 +111,26 @@ class AdventurerTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
         if editingStyle == .delete {
+            managedContext.delete(Adventurers[indexPath.row] as NSManagedObject)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+ 
 
     /*
     // Override to support rearranging the table view.
@@ -137,7 +146,23 @@ class AdventurerTableViewController: UITableViewController {
         return true
     }
     */
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
+        do {
+            Adventurers = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -146,32 +171,13 @@ class AdventurerTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "ToQuest" {
-            
+            print("directing to quest")
             let qViewController = segue.destination as? QuestViewController
             
             if let selectedCell = sender as? MemberTableViewCell {
                 let indexPath = tableView.indexPath(for: selectedCell)!
-                
-                let adventurer = Adventurers[indexPath.row]
-                let lev = adventurer.value(forKeyPath: "level")
-                let levelAtSelect = "\(lev ?? 1)"
-                let portraitAtSelect = UIImage(named: "member2")
-                let professionAtSelect = adventurer.value(forKeyPath: "profession") as? String
-                let nameAtSelect = adventurer.value(forKeyPath: "name") as? String
-                let att = adventurer.value(forKeyPath: "attackMod")
-                let attackAtSelect =  "\(att ?? 0)"
-                let curHpAtSelect = adventurer.value(forKeyPath: "currentHP")
-                let totHpAtSelect =
-                adventurer.value(forKeyPath: "totalHP")
-                let hpAtSelect = "\(curHpAtSelect ?? 0)/\(totHpAtSelect ?? 0)"
-                
                 if (qViewController != nil) {
-                    qViewController!.levelLabel.text = levelAtSelect
-                    qViewController!.portrait.image = portraitAtSelect
-                    qViewController!.professionLabel.text = professionAtSelect
-                    qViewController!.nameLabel.text = nameAtSelect
-                    qViewController!.attackLabel.text = attackAtSelect
-                    qViewController!.hpLabel.text = hpAtSelect
+                    qViewController!.selectedCell = indexPath.row
                 }
             }
         } else if segue.identifier == "PresentModally" {
