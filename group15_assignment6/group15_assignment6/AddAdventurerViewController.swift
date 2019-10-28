@@ -95,43 +95,6 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     
     
     @IBAction func save(_ sender: UIButton) {
-        /*
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        // 1
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        
-        // 2
-        let entity =
-            NSEntityDescription.entity(forEntityName: "Adventurer",
-                                       in: managedContext)!
-        
-        let adventurer = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-        
-        let namefield = nameTextField.text
-        let classfield = classTextField.text
-        let selectedimage = UIImage(named: portraitImageList[0])!
-        let imageData = selectedimage.pngData()
-        
-        // 3
-        adventurer.setValue(namefield, forKeyPath: "name")
-        adventurer.setValue(classfield, forKeyPath: "profession")
-        adventurer.setValue(imageData, forKeyPath: "portrait")
-    
-        
-        // 4
-        do {
-            try managedContext.save()
-            Adventurers.append(adventurer)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        */
     }
     
 }

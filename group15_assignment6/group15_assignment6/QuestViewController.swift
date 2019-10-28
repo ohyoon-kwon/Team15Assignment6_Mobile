@@ -11,6 +11,9 @@ import CoreData
 class QuestViewController: UIViewController {
     
     var timer: Timer?
+    var Adventurers: [NSManagedObject] = []
+    var adventurerID : Int?
+    
     @IBOutlet weak var questDetailText: UITextView!
     @IBOutlet weak var attackLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -79,6 +82,47 @@ class QuestViewController: UIViewController {
     @IBAction func endquest(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
 
+    }
+    
+    func getAdventurer(ID : Int){
+        let adventurer = Adventurers[ID]
+        print(adventurer)
+        //portrait.image =
+        nameLabel.text = adventurer.value(forKeyPath: "name") as? String
+        levelLabel.text = adventurer.value(forKeyPath: "level") as? String
+        professionLabel.text = adventurer.value(forKeyPath: "profession") as? String
+        attackLabel.text = adventurer.value(forKeyPath: "attackMod") as? String
+        let curHP = adventurer.value(forKeyPath: "currentHP") as? String
+        let totHP = adventurer.value(forKeyPath: "totalHP") as? String
+        print(curHP)
+        print(totHP)
+        hpLabel.text = "\(curHP)/\(totHP)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Adventurer")
+        
+        //3
+        do {
+            Adventurers = try managedContext.fetch(fetchRequest)
+            getAdventurer(ID: adventurerID!)
+
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     /*

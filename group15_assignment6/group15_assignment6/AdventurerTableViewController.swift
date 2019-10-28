@@ -181,35 +181,13 @@ class AdventurerTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination
         // Pass the selected object to the new view controller.
-        
+
         if segue.identifier == "ToQuest" {
-            
             let qViewController = segue.destination as? QuestViewController
             
             if let selectedCell = sender as? MemberTableViewCell {
                 let indexPath = tableView.indexPath(for: selectedCell)!
-                
-                let adventurer = Adventurers[indexPath.row]
-                let lev = adventurer.value(forKeyPath: "level")
-                let levelAtSelect = "\(lev ?? 1)"
-                let portraitAtSelect = UIImage(named: "member2")
-                let professionAtSelect = adventurer.value(forKeyPath: "profession") as? String
-                let nameAtSelect = adventurer.value(forKeyPath: "name") as? String
-                let att = adventurer.value(forKeyPath: "attackMod")
-                let attackAtSelect =  "\(att ?? 0)"
-                let curHpAtSelect = adventurer.value(forKeyPath: "currentHP")
-                let totHpAtSelect =
-                adventurer.value(forKeyPath: "totalHP")
-                let hpAtSelect = "\(curHpAtSelect ?? 0)/\(totHpAtSelect ?? 0)"
-                
-                if (qViewController != nil) {
-                    qViewController!.levelLabel.text = levelAtSelect
-                    qViewController!.portrait.image = portraitAtSelect
-                    qViewController!.professionLabel.text = professionAtSelect
-                    qViewController!.nameLabel.text = nameAtSelect
-                    qViewController!.attackLabel.text = attackAtSelect
-                    qViewController!.hpLabel.text = hpAtSelect
-                }
+                qViewController!.adventurerID = indexPath.row
             }
         } else if segue.identifier == "PresentModally" {
             print("Modal view presented")

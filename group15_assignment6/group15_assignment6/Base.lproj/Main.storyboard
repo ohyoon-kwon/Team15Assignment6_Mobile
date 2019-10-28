@@ -123,7 +123,7 @@
                                     <outlet property="nameLabel" destination="ROv-IR-mmy" id="VhK-5I-G4R"/>
                                     <outlet property="portraitImage" destination="KM2-xp-xki" id="Fdq-Xm-5XX"/>
                                     <outlet property="professionLabel" destination="PDX-Fh-Vye" id="h7e-s6-SKf"/>
-                                    <segue destination="jZt-eL-9EK" kind="presentation" identifier="segueFromQuest" id="rsQ-H2-XOB"/>
+                                    <segue destination="jZt-eL-9EK" kind="presentation" identifier="ToQuest" id="rsQ-H2-XOB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
