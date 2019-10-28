@@ -24,7 +24,7 @@ class QuestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let _ = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(questTurn), userInfo: nil, repeats: true)
+        let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(questTurn), userInfo: nil, repeats: true)
     }
     
     @objc func questTurn() {

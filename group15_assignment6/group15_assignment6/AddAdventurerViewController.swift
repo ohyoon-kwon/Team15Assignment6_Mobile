@@ -12,7 +12,7 @@ import os.log
 class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     var Adventurers: [NSManagedObject] = []
     
-    var portraitImageList = ["member1","member2","member3","member4","member5"]
+    var portraitImageList = ["member1", "member2", "member3", "member4", "member5"]
     
     //MARK: outlets
     @IBOutlet weak var nameTextField: UITextField!
@@ -116,11 +116,12 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         let namefield = nameTextField.text
         let classfield = classTextField.text
         let selectedimage = UIImage(named: portraitImageList[0])!
+        let imageData = selectedimage.pngData()
         
         // 3
         adventurer.setValue(namefield, forKeyPath: "name")
         adventurer.setValue(classfield, forKeyPath: "profession")
-        adventurer.setValue(selectedimage, forKeyPath: "portrait")
+        adventurer.setValue(imageData, forKeyPath: "portrait")
     
         
         // 4
