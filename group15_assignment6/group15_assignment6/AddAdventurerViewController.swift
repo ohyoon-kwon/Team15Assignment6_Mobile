@@ -12,6 +12,8 @@ import os.log
 class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     var Adventurers: [NSManagedObject] = []
     
+    var selectedPortrait: UIImage? = nil
+    
     var portraitImageList = ["member1", "member2", "member3", "member4", "member5"]
     
     //MARK: outlets
@@ -69,6 +71,7 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.borderWidth = 2.0
         cell?.layer.borderColor = UIColor.gray.cgColor
+        selectedPortrait = UIImage(named: portraitImageList[indexPath.row])!
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

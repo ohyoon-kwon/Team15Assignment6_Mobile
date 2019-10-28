@@ -61,7 +61,11 @@ class AdventurerTableViewController: UITableViewController {
         let adventurer = Adventurers[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell",
                                           for: indexPath) as! MemberTableViewCell
-        cell.portraitImage?.image = UIImage(named: "member2")
+        if let imageData = adventurer.value(forKey: "portrait") as? Data {
+            cell.portraitImage?.image = UIImage(data: imageData)
+        } else {
+            cell.portraitImage?.image = UIImage(named: "member2")
+        }
         cell.nameLabel?.text =
             adventurer.value(forKeyPath: "name") as? String
         let lev = adventurer.value(forKeyPath: "level")
@@ -81,14 +85,14 @@ class AdventurerTableViewController: UITableViewController {
     @IBAction func unwindToAdventurerView (sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? AddAdventurerViewController {
             let nameVal = sourceViewController.nameTextField.text ?? ""
-            //let photo = sourceViewController.photoImageView.image!
             let classVal = sourceViewController.classTextField.text ?? ""
-            saveToCore(nameVal: nameVal,classVal: classVal/*,photo: photo*/)
+            let photo = sourceViewController.selectedPortrait!
+            saveToCore(nameVal: nameVal,classVal: classVal, photo: photo)
             tableView.reloadData()
         }
     }
     
-    func saveToCore(nameVal:String,classVal:String/*,photo:UIImage*/) {
+    func saveToCore(nameVal:String,classVal:String,photo:UIImage) {
         
         let totalHP = Int16.random(in: 80..<130)
         let currentHP = totalHP
@@ -115,7 +119,8 @@ class AdventurerTableViewController: UITableViewController {
         member.setValue(attackPoint, forKey: "attackMod")
         member.setValue(currentHP, forKey: "currentHP")
         member.setValue(totalHP, forKey: "totalHP")
-        //member.setValue(photo, forKey: "portrait")
+        let portraitData = photo.pngData()
+        member.setValue(portraitData, forKey: "portrait")
         
         // 4
         do {
