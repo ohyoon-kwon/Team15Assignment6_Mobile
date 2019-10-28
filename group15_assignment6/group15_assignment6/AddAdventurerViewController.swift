@@ -95,7 +95,7 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     
     
     @IBAction func save(_ sender: UIButton) {
-        
+        /*
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -131,9 +131,8 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        
+        */
     }
-    
     
 }
 
