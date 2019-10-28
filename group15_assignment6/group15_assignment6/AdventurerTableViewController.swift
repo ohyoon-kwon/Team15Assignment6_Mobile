@@ -42,7 +42,6 @@ class AdventurerTableViewController: UITableViewController {
             adventurer.value(forKeyPath: "name") as? String
         cell.levelLabel?.text =
             adventurer.value(forKeyPath: "level") as? String
-        cell.levelLabel?.text = "\(lev ?? 1)"
         cell.professionLabel?.text =
             adventurer.value(forKeyPath: "profession") as? String
         let att = adventurer.value(forKeyPath: "attackMod")
