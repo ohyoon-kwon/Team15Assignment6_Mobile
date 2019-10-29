@@ -119,6 +119,7 @@ class QuestViewController: UIViewController {
         if (monstersSlayed == 3) {
             let level = (levelLabel.text! as NSString).intValue;
             levelLabel.text = String(level + 1);
+            questDetailText.text += "\n\(nameLabel.text ?? "") leveled up!"
             monstersSlayed = 0;
         }
     }
