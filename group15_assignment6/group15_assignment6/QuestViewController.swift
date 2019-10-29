@@ -25,7 +25,6 @@ class QuestViewController: UIViewController {
     var turn = 0;
     var enemyHP = 0;
     var monstersSlayed = 0
-    var currentLevel = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +77,6 @@ class QuestViewController: UIViewController {
     }
    
     @objc func questTurn() {
-        
         // Set enemy
         if (enemyHP <= 0) {
             enemyHP = Int(arc4random_uniform(50)) + 100;

@@ -13,7 +13,6 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     var Adventurers: [NSManagedObject] = []
     
     var selectedPortrait: UIImage? = nil
-    var currentLevel: String? = nil
     
     var portraitImageList = ["member1", "member2", "member3", "member4", "member5"]
     
@@ -30,6 +29,11 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
         classTextField.delegate = self
         updateSaveButtonState()
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        //savebtn.isEnabled = false
     }
     
     private func updateSaveButtonState() {
@@ -89,6 +93,11 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+    }
+    
+    
+    
+    @IBAction func save(_ sender: UIButton) {
     }
     
 }

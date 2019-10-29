@@ -68,9 +68,8 @@ class AdventurerTableViewController: UITableViewController {
         }
         cell.nameLabel?.text =
             adventurer.value(forKeyPath: "name") as? String
-        //let lev = adventurer.value(forKeyPath: "level")
-        //cell.levelLabel?.text = "\(lev ?? 1)"
-        cell.levelLabel?.text = adventurer.value(forKeyPath: "level") as? String
+        let lev = adventurer.value(forKeyPath: "level")
+        cell.levelLabel?.text = "\(lev ?? 1)"
         cell.professionLabel?.text =
             adventurer.value(forKeyPath: "profession") as? String
         let att = adventurer.value(forKeyPath: "attackMod")
@@ -88,13 +87,12 @@ class AdventurerTableViewController: UITableViewController {
             let nameVal = sourceViewController.nameTextField.text ?? ""
             let classVal = sourceViewController.classTextField.text ?? ""
             let photo = sourceViewController.selectedPortrait!
-            let levelVal = sourceViewController.currentLevel!
-            saveToCore(nameVal: nameVal,classVal: classVal, photo: photo, levelVal: levelVal)
+            saveToCore(nameVal: nameVal,classVal: classVal, photo: photo)
             tableView.reloadData()
         }
     }
     
-    func saveToCore(nameVal:String,classVal:String,photo:UIImage, levelVal: String) {
+    func saveToCore(nameVal:String,classVal:String,photo:UIImage) {
         
         let totalHP = Int16.random(in: 80..<130)
         let currentHP = totalHP
@@ -116,7 +114,7 @@ class AdventurerTableViewController: UITableViewController {
         
         // 3
         member.setValue(nameVal, forKeyPath: "name")
-        member.setValue(levelVal, forKeyPath: "level")
+        member.setValue(1, forKeyPath: "level")
         member.setValue(classVal, forKey: "profession")
         member.setValue(attackPoint, forKey: "attackMod")
         member.setValue(currentHP, forKey: "currentHP")
