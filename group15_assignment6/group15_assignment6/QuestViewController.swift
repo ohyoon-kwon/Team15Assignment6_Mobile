@@ -80,7 +80,6 @@ class QuestViewController: UIViewController {
         // Set enemy
         if (enemyHP <= 0) {
             enemyHP = Int(arc4random_uniform(50)) + 100;
-            //enemyHP = 20;
             if (turn != 0) {questDetailText.text += "\nEnemy is defeated!\nA new enemy appears!"; monstersSlayed += 1;}
         }
         // Adventurer makes move
@@ -101,7 +100,6 @@ class QuestViewController: UIViewController {
         else {
             if (attack) {
                 let damage = Int(arc4random_uniform(10)) + 5;
-                //let damage = 1
                 // subtact from MEMBER_HP
                 let hp = (curLabel.text! as NSString).intValue
                 curLabel.text = String(hp - Int32(damage))
@@ -113,25 +111,37 @@ class QuestViewController: UIViewController {
         turn += 1;
         // Close window if  MEMBER_HP falls to zero:
         if ((curLabel.text! as NSString).intValue <= 0) {
-            dismiss(animated: true, completion: nil)
-            
+            curLabel.text = String(0)
         }
+        
         if (monstersSlayed == 3) {
             let level = (levelLabel.text! as NSString).intValue;
             levelLabel.text = String(level + 1);
             questDetailText.text += "\n\(nameLabel.text ?? "") leveled up!"
             monstersSlayed = 0;
+            let newLevel = Int(levelLabel.text!)
+            let adventurer = Adventurers[adventurerID!]
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                else {
+                    return
+            }
+            let managedContext = appDelegate.persistentContainer.viewContext
+            do {
+                try managedContext.save()
+                adventurer.setValue(newLevel, forKey: "level")
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
         }
     }
  
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let _ = segue.destination as? AdventurerTableViewController
     }
-    */
-
 }

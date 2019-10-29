@@ -20,11 +20,13 @@ class AdventurerTableViewController: UITableViewController {
         // get sample data to display quest before add member working
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.reloadData()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        tableView.reloadData()
         //1
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {

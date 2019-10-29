@@ -45,13 +45,14 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
-        print("end edit")
-        print("\(savebtn.isEnabled)")
-        nameTextField.resignFirstResponder()
-        classTextField.resignFirstResponder()
     }
     
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        classTextField.resignFirstResponder()
+        return true
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return portraitImageList.count
     }
@@ -94,8 +95,6 @@ class AddAdventurerViewController: UIViewController, UITextFieldDelegate, UIColl
             return
         }
     }
-    
-    
     
     @IBAction func save(_ sender: UIButton) {
     }
