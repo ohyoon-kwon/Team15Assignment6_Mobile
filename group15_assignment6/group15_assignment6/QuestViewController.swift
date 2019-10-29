@@ -29,7 +29,7 @@ class QuestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
- /*       let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(questTurn), userInfo: nil, repeats: true)*/
+        let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(questTurn), userInfo: nil, repeats: true)
     }
     
     // MARK: Action
@@ -46,9 +46,13 @@ class QuestViewController: UIViewController {
         nameLabel.text = adventurer.value(forKeyPath: "name") as? String
         levelLabel.text = adventurer.value(forKeyPath: "level") as? String
         professionLabel.text = adventurer.value(forKeyPath: "profession") as? String
-        /*attackLabel.text = adventurer.value(forKeyPath: "attackMod")! as? String
-        totLabel.text = adventurer.value(forKeyPath: "totalHP")! as? String
-        curLabel.text = totLabel.text*/
+        let attack = adventurer.value(forKeyPath: "attackMod")! as! Int
+        let tot = adventurer.value(forKeyPath: "totalHP")! as! Int
+        let level = adventurer.value(forKeyPath: "level")! as! Int
+        levelLabel.text = String(level)
+        attackLabel.text = String(attack)
+        totLabel.text = String(tot)
+        curLabel.text = totLabel.text
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +75,7 @@ class QuestViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-   /*
+   
     @objc func questTurn() {
         // Set enemy
         if (enemyHP <= 0) {
@@ -85,7 +89,7 @@ class QuestViewController: UIViewController {
             if (attack) {
                 // Access MEMBER_ATTACK and use it as a multplier.
                 var temp = (attackLabel.text! as NSString).doubleValue;
-                temp = round(temp * 15);
+                temp = round(temp * 12);
                 let damage = Int(temp) + Int(arc4random_uniform(10)) + 10;
                 enemyHP -= Int(damage);
                 // Access MEMBER_NAME to print to log
@@ -118,7 +122,7 @@ class QuestViewController: UIViewController {
             monstersSlayed = 0;
         }
     }
- */
+ 
     /*
     // MARK: - Navigation
 
