@@ -112,8 +112,8 @@ class QuestViewController: UIViewController {
         // Close window if  MEMBER_HP falls to zero:
         if ((curLabel.text! as NSString).intValue <= 0) {
             curLabel.text = String(0)
+            dismiss(animated: true, completion: nil)
         }
-        
         if (monstersSlayed == 3) {
             let level = (levelLabel.text! as NSString).intValue;
             levelLabel.text = String(level + 1);
